@@ -1,5 +1,5 @@
 packaging
-proxlb-solver>=0.1.1
+proxlb-solver>=0.1.2
 proxmoxer
 pydantic
 requests
