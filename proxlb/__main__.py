@@ -151,6 +151,7 @@ while True:
         Helper.log_node_metrics(proxlb_data, init=False)
 
         # Perform balancing actions via Proxmox API
+        _skipped_greedy_balancing = False
         if proxlb_data.meta.balancing.enable:
             if not cli_args.dry_run:
                 if (_solver_cfg.enable
@@ -168,6 +169,7 @@ while True:
                                     f"falling back to ProxLB plan: {exc}")
                                 Balancing.balance(proxmox_api, proxlb_data)
                             else:
+                                _skipped_greedy_balancing = True
                                 logger.warning(
                                     f"[solver] active execution failed, "
                                     f"skipping greedy fallback "
@@ -175,6 +177,7 @@ while True:
                     elif _solver_cfg.fallback_to_greedy:
                         Balancing.balance(proxmox_api, proxlb_data)
                     else:
+                        _skipped_greedy_balancing = True
                         logger.warning(
                             "[solver] active: no feasible solver plan; "
                             "skipping greedy fallback "
@@ -184,7 +187,7 @@ while True:
                 reinstall_sigint()
 
         # Record whether balancing was executed or skipped (dry-run).
-        if _run_file is not None:
+        if _run_file is not None and not _skipped_greedy_balancing:
             try:
                 _solver_shadow.finalize_run(_run_file, dry_run=cli_args.dry_run)
             except Exception as exc:
