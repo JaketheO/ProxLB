@@ -120,7 +120,7 @@ solver:
 | `log_dir` | string | `/var/log/proxlb/solver` | Directory for JSONL run logs and HTML reports. Created automatically if absent. The user running ProxLB must have write access (see [Log directory permissions](#logging-and-reports)). |
 | `timeout_seconds` | float | `30.0` | Wall-clock time limit given to the CP-SAT solver per solve (initial solve and each re-solve in active mode). |
 | `use_reservations` | bool | `True` | When `True`, memory reservations defined in `balancing.node_resource_reserve` are applied as hard constraints in the solver (capacity is reduced by the configured GB). |
-| `active_step_retries` | int | `3` | Maximum number of re-solve attempts in active mode. After this many failures the remaining VMs are handed back to ProxLB's Balancing() when `fallback_to_greedy` is `True`. |
+| `active_step_retries` | int | `3` | Maximum number of re-solve attempts in active mode. After this many failures the remaining VMs are handed back to ProxLB's Balancing(). |
 | `fallback_to_greedy` | bool | `True` | In active mode, fall back to ProxLB's greedy `Balancing()` when the solver produces no plan at all (`INFEASIBLE`, or the solver run could not complete), or when active execution raises. Set to `False` to suppress the greedy pass in those two cases. Does **not** yet cover the in-flight remainder handback described under [Active mode](#active-mode). |
 
 ### Shadow mode (default)
