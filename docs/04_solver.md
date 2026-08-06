@@ -121,7 +121,7 @@ solver:
 | `timeout_seconds` | float | `30.0` | Wall-clock time limit given to the CP-SAT solver per solve (initial solve and each re-solve in active mode). |
 | `use_reservations` | bool | `True` | When `True`, memory reservations defined in `balancing.node_resource_reserve` are applied as hard constraints in the solver (capacity is reduced by the configured GB). |
 | `active_step_retries` | int | `3` | Maximum number of re-solve attempts in active mode. After this many failures the remaining VMs are handed back to ProxLB's Balancing() when `fallback_to_greedy` is `True`. |
-+| `fallback_to_greedy` | bool | `True` | In active mode, fall back to ProxLB's greedy `Balancing()` when the solver produces no plan at all (`INFEASIBLE`, or the solver run could not complete), or when active execution raises. Set to `False` to suppress the greedy pass in those two cases. Does **not** yet cover the in-flight remainder handback described under [Active mode](#active-mode). |
+| `fallback_to_greedy` | bool | `True` | In active mode, fall back to ProxLB's greedy `Balancing()` when the solver produces no plan at all (`INFEASIBLE`, or the solver run could not complete), or when active execution raises. Set to `False` to suppress the greedy pass in those two cases. Does **not** yet cover the in-flight remainder handback described under [Active mode](#active-mode). |
 
 ### Shadow mode (default)
 
