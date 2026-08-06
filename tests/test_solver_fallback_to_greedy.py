@@ -1,7 +1,7 @@
 from proxlb.utils.config_parser import Config
 
 
-def test_solver_fallback_to_greedy_defaults_true():
+def test_solver_fallback_to_greedy_defaults_true() -> None:
     cfg = Config.Solver()
     assert cfg.fallback_to_greedy is True
 
