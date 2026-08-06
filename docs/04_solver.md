@@ -148,7 +148,7 @@ solver:
   log_dir: /var/log/proxlb/solver
   timeout_seconds: 60
   active_step_retries: 3
-  fallback_to_greedy: False  # fail closed: do not migrate when the solver cannot find a safe plan
+  fallback_to_greedy: False  # do not start a greedy migration when the solver cannot find a safe plan
 ```
 
 In active mode the solver replaces ProxLB's migration execution.  If a migration fails (verified
