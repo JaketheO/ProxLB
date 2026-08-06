@@ -6,6 +6,6 @@ def test_solver_fallback_to_greedy_defaults_true() -> None:
     assert cfg.fallback_to_greedy is True
 
 
-def test_solver_fallback_to_greedy_can_be_disabled():
+def test_solver_fallback_to_greedy_can_be_disabled() -> None:
     cfg = Config.Solver(fallback_to_greedy=False)
     assert cfg.fallback_to_greedy is False
